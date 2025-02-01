@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Provide cinema catalog info.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "start": "node -r dotenv/config index",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
   },
   "author": "iuri g lima",
   "license": "ISC",

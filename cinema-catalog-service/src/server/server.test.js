@@ -14,19 +14,19 @@ test('Server Start', async () => {
 })
 
 test('Health check', async () => {
-    //process.env.PORT= 3001;
-   const app = await start(apiMock);
-   //const request = supertest();
-   const response = await supertest(app).get('/health');
-   expect(response.status).toEqual(200);
+    process.env.PORT= 3005;
+    const app = await start(apiMock);
+    //const request = supertest();
+    const response = await supertest(app).get('/health');
+    expect(response.status).toEqual(200);
 });
 
 test('Error check', async () => {
-    //process.env.PORT= 3002;
-   const app = await start(apiMock);
-   //const request = supertest();
-   const response = await supertest(app).get('/error');
-   expect(response.status).toEqual(500);
+    process.env.PORT= 3006;
+    const app = await start(apiMock);
+    //const request = supertest();
+    const response = await supertest(app).get('/error');
+    expect(response.status).toEqual(500);
 });
 
 test('Server Stop', async () => {

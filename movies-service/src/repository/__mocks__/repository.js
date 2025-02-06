@@ -4,7 +4,7 @@ const movies = [{
     "sinopse": "Os heróis mais poderosos da Terra enfrentando o Thanos. De novo.",
     "duracao": 181,
     "dataLancamento": {
-      "$date": new Date("2025-01-05T00:00:00.000Z"),
+      "$date": new Date("2025-02-01T00:00:00.000Z"),
     },
     "imagem": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_UX182_CR0,0,182,268_AL_.jpg",
     "categorias": [
@@ -41,4 +41,13 @@ export async function getMovieById(id) {
 export async function getMoviePremieres() {
     movies[0].dataLancamento = new Date();
     return [movies[0]];
+}
+
+export async function addMovie(movie) {
+    return movies[0];
+}
+
+export async function deleteMovie(id) {
+  if(!id) throw new Error('nao foi possivel excluir este filme.')
+    return true;
 }

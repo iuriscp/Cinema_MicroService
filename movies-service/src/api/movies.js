@@ -1,3 +1,4 @@
+import validateMovie from "../middlewares/validationMiddleware.js";
 
 export default (app, repository) => {
 
@@ -18,4 +19,24 @@ export default (app, repository) => {
         const movies = await repository.getAllMovies();
         res.json(movies);
     })
+
+    app.post('/movies', validateMovie, async(req, res, next)=>{
+        const titulo = req.body.titulo;
+        const sinopse = req.body.sinopse;
+        const duracao = parseInt(req.body.duracao);
+        const dataLancamento = new Date(req.body.dataLancamento);
+        const imagem = req.body.imagem;
+        const categorias = req.body.categorias;
+
+        const result = await repository.addMovie({titulo, sinopse, duracao, dataLancamento, imagem, categorias})
+        return res.status(201).json(result)
+    })
+
+    app.delete('/movies/:id', async (req, res, next) => {
+        const id =req.params.id;
+        const result = await repository.deleteMovie(id);
+        res.sendStatus(204);
+    } )
 }
+
+   

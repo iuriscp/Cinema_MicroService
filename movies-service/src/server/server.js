@@ -10,6 +10,8 @@ export async function start(api, repository) {
 
   app.use(helmet());
   app.use(morgan("dev"));
+  app.use(express.json())
+
 
   app.get("/health", (req, res, next) => {
     res.send(`the service ${process.env.MS_NAME} is running at ${process.env.PORT}`);

@@ -24,3 +24,16 @@ export async function getMoviePremieres() {
     .find({ dataLancamento: { $gte: monthAgo } })
     .toArray();
 }
+
+export async function addMovie(movie) {
+    const db = await connect();
+
+    const result = await db.collection("movies").insertOne(movie);
+    movie._id = result.insertedId;
+    return movie;
+}
+
+export async function deleteMovie(id) {
+    const db = await connect();
+    return db.collection("movies").deleteOne({ _id: new ObjectId(id) });
+}

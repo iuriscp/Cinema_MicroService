@@ -9,12 +9,13 @@ const apiMock = jest.fn((app, repository) => {
 });
 
 test('Server Start', async () => {
+    process.env.PORT = 3007;
    const app = await start(apiMock);
    expect(app).toBeTruthy();
 })
 
 test('Health check', async () => {
-    //process.env.PORT= 3001;
+    process.env.PORT= 3001;
    const app = await start(apiMock);
    //const request = supertest();
    const response = await supertest(app).get('/health');
@@ -22,7 +23,7 @@ test('Health check', async () => {
 });
 
 test('Error check', async () => {
-    //process.env.PORT= 3002;
+    process.env.PORT= 3002;
    const app = await start(apiMock);
    //const request = supertest();
    const response = await supertest(app).get('/error');

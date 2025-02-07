@@ -1,3 +1,4 @@
+import "express-async-errors"; // Importando o express-async-errors
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";

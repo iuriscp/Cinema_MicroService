@@ -7,7 +7,7 @@ let cinemaId = null;
 let movieId = null;
 
 beforeAll(async()=>{
-    const cities = await repository.getAllCites();
+    const cities = await repository.getAllCities();
     cityId = cities[cities.length - 1]._id;
 
     const cinemas = await repository.getCinemasByCityId(cityId);
@@ -17,7 +17,7 @@ beforeAll(async()=>{
 });
 
     test('getAllCities', async () => {
-        const cities = await repository.getAllCites();
+        const cities = await repository.getAllCities();
         expect(Array.isArray(cities)).toBeTruthy();
         expect(cities.length).toBeTruthy();
     });

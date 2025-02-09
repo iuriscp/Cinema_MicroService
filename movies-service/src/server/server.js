@@ -2,6 +2,7 @@ import "express-async-errors"; // Importando o express-async-errors
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
+import logger from "../config/logger.js";
 
 let server = null;
 
@@ -21,7 +22,7 @@ export async function start(api, repository) {
   api(app, repository);
 
   app.use((error, req, res, next) => {
-    console.error(error);
+    logger.error( error.stack);
     res.sendStatus(500);
   });
 

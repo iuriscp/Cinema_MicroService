@@ -3,7 +3,7 @@ const config = {
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: "coverage",
-  coveragePathIgnorePatterns: ["\\\\node_modules\\\\"],
+  coveragePathIgnorePatterns: ["\\\\node_modules\\\\", "logger.js"],
   coverageProvider: "v8",
   coverageReporters: ["json", "text", "lcov", "clover"],
   moduleDirectories: ["node_modules"],
